@@ -1,0 +1,24 @@
+const int ledpin = 8;
+void setup() {
+  pinMode(ledpin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    String command = Serial.readStringUntil('\n');
+    int value = command.toInt();
+    if (command == "SABS") {
+
+      digitalWrite(ledpin, HIGH);
+      Serial.println("LED turned on");
+
+    }  else if (value == 50)  {
+      digitalWrite (ledpin, LOW);
+      Serial.println("LED turned off");
+
+    } else {
+      Serial.println("Invalid command ");
+    }
+  }
+}

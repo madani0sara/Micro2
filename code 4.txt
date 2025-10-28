@@ -1,0 +1,18 @@
+const int ledpin = 8;
+
+void setup() {
+  pinMode(ledpin, OUTPUT);
+  Serial.begin (9600);
+}
+
+  void loop() {
+    if (Serial.available() >0){
+   String command = Serial.readStringUntil('\n');
+      if (command == "ROSHAN") {
+        digitalWrite(ledpin, HIGH);
+
+      }  else if (command == "KHAMOOSH")  {
+        digitalWrite (ledpin, LOW);
+      }
+    }
+  }
